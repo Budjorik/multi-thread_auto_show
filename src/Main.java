@@ -1,7 +1,7 @@
 public class Main {
-    public static void main(String[] args) {
-        final int NUMBER_OF_DEALS = 2;
-        Autoshow autoshow = new Autoshow(NUMBER_OF_DEALS, NUMBER_OF_DEALS);
+    public static void main(String[] args) throws InterruptedException {
+        int numberOfDeals = 10;
+        Autoshow autoshow = new Autoshow(numberOfDeals, numberOfDeals);
         while (autoshow.getMaxNumberOfProduces() > 0 && autoshow.getMaxNumberOfSales() > 0) {
             startSales(autoshow);
             new Thread(null, autoshow::receiveCar, "Производитель").start();

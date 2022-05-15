@@ -6,7 +6,7 @@ public class Autoshow {
     private final int SLEEP_TO_SALE = 1_000;
     private int maxNumberOfSales;
     private int maxNumberOfProduces;
-    private final int NUMBER_OF_CUSTOMERS = 10;
+    private final int NUMBER_OF_CUSTOMERS = 50;
     private Producer producer = new Producer(this);
     private List<Customer> customers = setCustomers(NUMBER_OF_CUSTOMERS);
     private int currentNumberOfCustomer = 0;
@@ -57,7 +57,7 @@ public class Autoshow {
             try {
                 Thread.sleep(SLEEP_TO_PRODUCE);
                 producer.produceCar();
-                notifyAll();
+                notify();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
