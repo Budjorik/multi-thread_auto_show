@@ -68,7 +68,7 @@ public class Autoshow {
     }
 
     public synchronized void sellCar() {
-        if (maxNumberOfSales > 0 && currentNumberOfCustomer < NUMBER_OF_CUSTOMERS) {
+        if (maxNumberOfSales > 0) {
             try {
                 System.out.println(Thread.currentThread().getName() + ": хочу купить а/м.");
                 while (carInStock == null) {
