@@ -2,10 +2,11 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         int numberOfDeals = 10;
         Autoshow autoshow = new Autoshow(numberOfDeals, numberOfDeals);
-        while (autoshow.getMaxNumberOfProduces() > 0 && autoshow.getMaxNumberOfSales() > 0) {
+        while (true) {
             startSales(autoshow);
             new Thread(null, autoshow::receiveCar, "Производитель").start();
         }
+
     }
 
     public static void startSales(Autoshow autoshow) {
@@ -14,6 +15,5 @@ public class Main {
             new Thread(null, autoshow::sellCar, nameOfCustomer).start();
         }
     }
-
 
 }

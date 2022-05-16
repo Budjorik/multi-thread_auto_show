@@ -62,8 +62,4 @@ public class Customer {
         System.out.println(Thread.currentThread().getName() + ": ура, я купил машину!");
     }
 
-
-
-
-
 }

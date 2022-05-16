@@ -57,7 +57,7 @@ public class Autoshow {
             try {
                 Thread.sleep(SLEEP_TO_PRODUCE);
                 producer.produceCar();
-                notify();
+                notifyAll();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
