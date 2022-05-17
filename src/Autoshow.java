@@ -53,7 +53,6 @@ public class Autoshow {
     }
 
     public synchronized void receiveCar() {
-        if (maxNumberOfProduces > 0 ) {
             try {
                 Thread.sleep(SLEEP_TO_PRODUCE);
                 producer.produceCar();
@@ -64,11 +63,9 @@ public class Autoshow {
             maxNumberOfProduces --;
             System.out.println("Автосалон: осталось произвести и поставить еще = "
                     + maxNumberOfProduces + " а/м.");
-        }
     }
 
     public synchronized void sellCar() {
-        if (maxNumberOfSales > 0) {
             try {
                 System.out.println(Thread.currentThread().getName() + ": хочу купить а/м.");
                 while (carInStock == null) {
@@ -88,7 +85,6 @@ public class Autoshow {
                 e.printStackTrace();
             }
             currentNumberOfCustomer++;
-        }
     }
 
 }

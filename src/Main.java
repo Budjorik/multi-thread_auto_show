@@ -1,11 +1,17 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         int numberOfDeals = 10;
         Autoshow autoshow = new Autoshow(numberOfDeals, numberOfDeals);
-        while (true) {
+
+        for (int i = 0 ; i < numberOfDeals ; i++) {
             startSales(autoshow);
             new Thread(null, autoshow::receiveCar, "Производитель").start();
         }
+        Thread.currentThread().interrupt();
+        Thread.currentThread().interrupt();
 
     }
 
