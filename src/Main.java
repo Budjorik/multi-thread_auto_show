@@ -10,8 +10,6 @@ public class Main {
             startSales(autoshow);
             new Thread(null, autoshow::receiveCar, "Производитель").start();
         }
-        Thread.currentThread().interrupt();
-        Thread.currentThread().interrupt();
 
     }
 
