@@ -9,7 +9,6 @@ public class Autoshow {
     private final int NUMBER_OF_CUSTOMERS = 50;
     private Producer producer = new Producer(this);
     private List<Customer> customers = setCustomers(NUMBER_OF_CUSTOMERS);
-    private int currentNumberOfCustomer = 0;
     private Car carInStock;
 
     public Autoshow(int maxNumberOfSales, int maxNumberOfProduces) {
