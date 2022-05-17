@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         int numberOfDeals = 10;
@@ -14,9 +11,10 @@ public class Main {
     }
 
     public static void startSales(Autoshow autoshow) {
-        for (int i = 1 ; i <= autoshow.getCustomers().size() ; i++) {
+        for (int i = 0 ; i < autoshow.getCustomers().size() ; i++) {
+            final int num = i;
             String nameOfCustomer = "Покупатель " + i;
-            new Thread(null, autoshow::sellCar, nameOfCustomer).start();
+            new Thread(null, () -> autoshow.sellCar(autoshow.getCustomers().get(num)), nameOfCustomer).start();
         }
     }
 

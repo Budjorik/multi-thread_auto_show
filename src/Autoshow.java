@@ -53,38 +53,37 @@ public class Autoshow {
     }
 
     public synchronized void receiveCar() {
-            try {
-                Thread.sleep(SLEEP_TO_PRODUCE);
-                producer.produceCar();
-                notifyAll();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            maxNumberOfProduces --;
-            System.out.println("Автосалон: осталось произвести и поставить еще = "
-                    + maxNumberOfProduces + " а/м.");
+        try {
+            Thread.sleep(SLEEP_TO_PRODUCE);
+            producer.produceCar();
+            notifyAll();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        maxNumberOfProduces --;
+        System.out.println("Автосалон: осталось произвести и поставить еще = "
+                + maxNumberOfProduces + " а/м.");
     }
 
-    public synchronized void sellCar() {
-            try {
-                System.out.println(Thread.currentThread().getName() + ": хочу купить а/м.");
-                while (carInStock == null) {
-                    System.out.println(Thread.currentThread().getName() + ": не могу купить, а/м нет.");
-                    wait();
-                }
-                Thread.sleep(SLEEP_TO_SALE);
-                if (customers.get(currentNumberOfCustomer).waitingCarAvailabilityCheck()) {
-                    if (customers.get(currentNumberOfCustomer).moneyAvailabilityCheck()) {
-                        customers.get(currentNumberOfCustomer).buyCar();
-                        maxNumberOfSales--;
-                        System.out.println("Автосалон: в продаже появится еще = "
-                                + maxNumberOfSales + " а/м.");
-                    }
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+    public synchronized void sellCar(Customer customer) {
+        try {
+            System.out.println(Thread.currentThread().getName() + ": хочу купить а/м.");
+            while (carInStock == null) {
+                System.out.println(Thread.currentThread().getName() + ": не могу купить, а/м нет.");
+                wait();
             }
-            currentNumberOfCustomer++;
+            Thread.sleep(SLEEP_TO_SALE);
+            if (customer.waitingCarAvailabilityCheck()) {
+                if (customer.moneyAvailabilityCheck()) {
+                    customer.buyCar();
+                    maxNumberOfSales--;
+                    System.out.println("Автосалон: в продаже появится еще = "
+                            + maxNumberOfSales + " а/м.");
+                }
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
